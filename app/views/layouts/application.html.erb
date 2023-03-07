@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fitnesstracker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header class="container-fluid text-center">
+      <h1>Fitness Tracker</h1>
+    </header>
+    <main class="container-fluid">
+      <%= yield %>
+    </main>
+    <footer class="container-fluid">
+    </footer>
+  </body>
+</html>
