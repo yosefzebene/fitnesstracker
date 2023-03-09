@@ -1,0 +1,20 @@
+<div class="row">
+    <% for i in 0..6 do %>
+        <div class="col border border-success rounded m-1">
+            <h2><%= Date::DAYNAMES[i] %></h2>
+            <%= link_to "Add", workouts_path(i), data: { turbo_frame: "modal" }, :class => "btn btn-info mb-1" %>
+            <% if @plan[i.to_s] != nil %>
+                <% @plan[i.to_s].each do |workout| %>
+                    <div class="card  mb-3">
+                        <div class="card-body">
+                            <h3><%= workout.name %></h3>
+                            <p><%= workout.description %></p>
+                            <%= button_to "Remove", remove_workout_path(workout.id, i), method: :delete %>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    <% end %>
+    <%= button_to "Create", create_workout_plan_path, :class => "btn btn-success" %>
+</div>

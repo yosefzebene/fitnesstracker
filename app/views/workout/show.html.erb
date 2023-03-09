@@ -1,0 +1,26 @@
+<%= turbo_frame_tag "modal" do%>
+<div class="modal  d-block">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Select Workout</h5>
+                <%= link_to "", "#", :class => 'btn-close', data: {
+                    controller: "modals",
+                    action: "modals#close"
+                } %>
+            </div>
+            <div class="modal-body">
+                <% @workouts.each do |workout| %>
+                    <div class="card mb-3">
+                        <h3><%= workout.name %></h3>
+                        <p><%= workout.description %></p>
+                        <%= button_to "Add", add_workout_path(workout.id, params[:day]) , data: {
+                            turbo_method: :post
+                        } %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>

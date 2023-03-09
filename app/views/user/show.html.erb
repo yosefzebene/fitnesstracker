@@ -1,0 +1,25 @@
+<h1>Crazy dash board</h1>
+
+<div>
+    <p>Email: <%= current_user.email %></p>
+    <p>Created on: <%= current_user.created_at %></p>
+    <%= button_to "Delete Plan", delete_workout_plan_path, method: :delete, :onclick => "alert('Are you sure?')", :class => "btn btn-danger" %>
+</div>
+
+<% if !current_user.has_plan? %>
+    <a href=<%= new_workout_plan_path %>>Create Workout Plan</a>
+<% else %>
+    <div class="row">
+        <div class="col border border-success rounded m-1">
+            <h2><%= @day_of_week.upcase %></h2>
+            <% @workouts.each do |workout| %>
+                <div class="card  mb-3">
+                    <div class="card-body">
+                        <h3><%= workout.workout.name %></h3>
+                        <p><%= workout.workout.description %></p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+<% end %>
